@@ -8,7 +8,7 @@ function SlopeField() {
   const { camera, gl } = useThree();
 
   useEffect(() => {
-    camera.position.set(0, -100, 10);
+    camera.position.set(0, -30, 10);
     camera.up.set(0, 5, 3);
   }, [camera]);
 
@@ -22,7 +22,7 @@ function SlopeField() {
       for (let z = -10; z <= 10; z += 1) {
         if (x !== 0 && y !== 0 && z !== 0) {
           // More complex equation: dy/dx = x / y, dz/dx = x / z, dz/dy = y / z
-          const dx = 0.1;
+          const dx = 0.2;
           const dy = dx * (x / y);
           const dz = dx * (x / z);
           const length = Math.sqrt(dx * dx + dy * dy + dz * dz);
@@ -37,7 +37,7 @@ function SlopeField() {
                 0,
               ]}
             >
-              <cylinderGeometry args={[0.1, 0.1, length, 12]} />
+              <cylinderGeometry args={[0.01, 0.15, length, 12]} />
               <meshBasicMaterial color={'#000000'} />
             </mesh>
           );
