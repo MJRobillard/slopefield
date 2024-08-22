@@ -129,7 +129,7 @@ function SlopeField() {
 }
 
 function App() {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   const showDrawer = () => {
     setVisible(true);
