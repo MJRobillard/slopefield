@@ -163,7 +163,7 @@ function App() {
         placement="right"
         onClose={onClose}
         visible={visible}
-        width={'20vw'} // Adjust width as needed
+        width={'30vw'} // Adjust width as needed
       >
         <p>left click to start manual control</p>
         <ul>
