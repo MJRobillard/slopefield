@@ -14,7 +14,7 @@ function SlopeField() {
   // Path parameters
   
   const radius = 30;
-  const speed = 0.0005; // Adjust the speed of the camera movement
+  const speed = 0.0001; // Adjust the speed of the camera movement
 
   useEffect(() => {
     camera.position.set(radius, 0, 10);
@@ -163,7 +163,7 @@ function App() {
         placement="right"
         onClose={onClose}
         visible={visible}
-        width={400} // Adjust width as needed
+        width={'20vw'} // Adjust width as needed
       >
         <p>left click to start manual control</p>
         <ul>
