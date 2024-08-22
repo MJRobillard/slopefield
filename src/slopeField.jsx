@@ -10,6 +10,7 @@ function SlopeField() {
   const [userControl, setUserControl] = useState(false);
 
   // Path parameters
+  
   const radius = 30;
   const speed = 0.0005; // Adjust the speed of the camera movement
 
