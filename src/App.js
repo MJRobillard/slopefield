@@ -4,6 +4,7 @@ import 'antd/dist/reset.css'; // Import Ant Design styles
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Text } from '@react-three/drei';
 import * as THREE from 'three';
+import webgazer from 'webgazer'; // Import WebGazer.js
 
 function SlopeField() {
   const meshRef = useRef(null);
@@ -11,10 +12,30 @@ function SlopeField() {
   const startTime = useRef(Date.now());
   const [userControl, setUserControl] = useState(false);
 
-  // Path parameters
-  
   const radius = 30;
   const speed = 0.0001; // Adjust the speed of the camera movement
+
+  // Initialize WebGazer and setup the gaze listener
+  useEffect(() => {
+    webgazer.setGazeListener((data, elapsedTime) => {
+      if (data && !userControl) {
+        const { x, y } = data;
+
+        // Convert gaze coordinates (x, y) to a range suitable for camera positioning
+        const normalizedX = (x / window.innerWidth - 0.5) * 2; // Normalize to range [-1, 1]
+        const normalizedY = (y / window.innerHeight - 0.5) * 2;
+
+        // Set camera position or rotation based on gaze data
+        camera.position.x = normalizedX * radius;
+        camera.position.y = -normalizedY * radius;
+        camera.lookAt(0, 0, 0);
+      }
+    }).begin();
+
+    return () => {
+      webgazer.end(); // Cleanup on unmount
+    };
+  }, [camera, userControl]);
 
   useEffect(() => {
     camera.position.set(radius, 0, 10);
@@ -171,7 +192,6 @@ function App() {
           <li>Scroll to zoom in and out.</li>
           <li>Click and drag to move around.</li>
           <li>Use the controls in the bottom right to adjust settings.</li>
-          {/* Add more instructions as needed */}
         </ul>
       </Drawer>
     </div>
