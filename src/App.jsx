@@ -165,7 +165,8 @@ function App() {
         visible={visible}
         width={'40vw'} // Adjust width as needed
       >
-        <p>left click to start manual control</p>
+      <p> Welcome to a simple 3d slope field visualization, by zooming in and orbiting around, you can explore how the slope changes based on the position! </p>  
+        <p>Left click to start manual csdontrol</p>
         <ul>
           <li>Use the mouse to rotate the view.</li>
           <li>Scroll to zoom in and out.</li>
